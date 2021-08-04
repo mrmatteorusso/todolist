@@ -8,6 +8,7 @@ const generateTemplate = todo => {
         <i class="far fa-trash-alt delete"></i>
     </li>`
     list.innerHTML += html;
+    console.log('ciao')
 
 }
 
