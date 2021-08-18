@@ -20,6 +20,12 @@ addForm.addEventListener('submit', e => {
     e.preventDefault();
     if (todo.length) {
         let tasks;
+
+        // in verità questo controllo è corretto ma va fatto all'inizio, allo start time
+        // non qui, perchè qui avviene solamente quando fai submit, e noi vogliamo popolare i task subito
+        // una volta popolati i tasks, vanno riempiti (generateTemplate)
+        // In questo caso va fatta un altra operazione del localStorage: il set
+        // perchè vogliamo settare il nuovo item che abbiamo appena inserito dopo aver fatto submit
         if(localStorage.getItem('tasks') === null) {
             tasks = [];
         } else {
@@ -38,10 +44,11 @@ addForm.addEventListener('submit', e => {
 
 
 list.addEventListener('click', e => {
-console.log('clicked')
-if (e.target.classList.contains('delete')) {
-    e.target.parentElement.remove();
-}
-
+    // so che è una piccolezza, ma occhio all'indentazione
+    // ti da struttura e una logica di lettura migliore del codice
+    console.log('clicked')
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
 })
 
