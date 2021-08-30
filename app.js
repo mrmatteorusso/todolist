@@ -1,5 +1,7 @@
+/*variables */
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
+
 
 const generateTemplate = todo => {
     const html = `
@@ -11,8 +13,6 @@ const generateTemplate = todo => {
     console.log('ciao')
 
 }
-
-
 
 addForm.addEventListener('submit', e => {
 
@@ -36,7 +36,7 @@ addForm.addEventListener('submit', e => {
 
 }); 
 
-
+/*Delete Item*/
 list.addEventListener('click', e => {
 console.log('clicked')
 if (e.target.classList.contains('delete')) {
