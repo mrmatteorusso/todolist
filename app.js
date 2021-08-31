@@ -11,7 +11,6 @@ const generateTemplate = todo => {
     </li>`
     
     list.innerHTML += html;
-    console.log('created!');
 }
 
 if (!storedItems) {
@@ -31,16 +30,24 @@ addForm.addEventListener('submit', e => {
         storedItems.push(todo);
         localStorage.setItem('tasks', JSON.stringify(storedItems))
         addForm.reset();
+        console.log(`${todo} has been added to html list`)
+        console.log(`Local storage now contains ${storedItems}`)
+
     }
 });
 
+/*Removing item*/
 list.addEventListener('click', e => {
     console.log(e.target);
-    // so che è una piccolezza, ma occhio all'indentazione
-    // ti da struttura e una logica di lettura migliore del codice
-    console.log('clicked')
     if (e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
-        console.dir(e.target.parentElement.firstElementChild.innerText);
+        let removedItem = e.target.parentElement.firstElementChild.innerText;
+        console.log(`${removedItem} has been removed from the html list`);
+        console.log(storedItems)
+        const newArr = storedItems.filter(item => item !== removedItem)
+        console.log(newArr)
+        storedItems = newArr
+        console.log(`Local storage now contains ${storedItems} `)
     }
 })
+
