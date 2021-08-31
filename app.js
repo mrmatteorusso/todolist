@@ -2,7 +2,7 @@
 // very beautiful comment for matteo
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
-
+let infoStorage = (localStorage.getItem('tasks'))
 
 const generateTemplate = todo => {
     const html = `
@@ -15,24 +15,26 @@ const generateTemplate = todo => {
 
 }
 
-addForm.addEventListener('submit', e => {
+if (!infoStorage) {
+    infoStorage = [];
+} else { 
+    JSON.parse(localStorage.getItem('infoStorage'))
+    infoStorage.forEach(element => {
+        generateTemplate(element)
+        
+    });
 
+}
+
+addForm.addEventListener('submit', e => {
     const todo = addForm.add.value.trim();
     e.preventDefault();
     if (todo.length) {
-        let tasks;
-        if(localStorage.getItem('tasks') === null) {
-            tasks = [];
-        } else {
-            tasks = JSON.parse(localStorage.getItem('tasks'));
-        }
-
+        let tasks = []
         generateTemplate(todo); 
         tasks.push(todo);
         localStorage.setItem('tasks', JSON.stringify(tasks))
         addForm.reset();  
-        // console.log(tasks.forEach( e => console.log(e)))
-
     }
 
 }); 
