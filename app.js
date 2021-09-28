@@ -1,3 +1,5 @@
+/*variables */
+// very beautiful comment for matteo
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
 // salvato gli items dal local storage in una variabile
@@ -32,11 +34,11 @@ addForm.addEventListener('submit', e => {
         addForm.reset();
         console.log(`${todo} has been added to html list`)
         console.log(`Local storage now contains ${storedItems}`)
-
     }
 });
 
 /*Removing item*/
+
 list.addEventListener('click', e => {
     console.log(e.target);
     if (e.target.classList.contains('delete')) {
