@@ -46,9 +46,11 @@ list.addEventListener('click', e => {
         let removedItem = e.target.parentElement.firstElementChild.innerText;
         console.log(`${removedItem} has been removed from the html list`);
         console.log(storedItems)
+        //localStorage.removeItem(removedItem)
         const newArr = storedItems.filter(item => item !== removedItem)
         console.log(newArr)
         storedItems = newArr
+        localStorage.setItem('tasks', JSON.stringify(storedItems))
         console.log(`Local storage now contains ${storedItems} `)
     }
 })
